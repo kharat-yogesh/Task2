@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile</title>
+    <!-- Add Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,10 +86,11 @@
             color: #333;
             font-size: 24px;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #0077b5;
+            color: #0077b5; /* Change color on hover */
         }
 
         .comments {
@@ -206,7 +209,6 @@
     <div id="content">
         <div id="profile">
             <h1>Company Profile</h1>
-
             <div class="profile-detail">
                 <label>Company Name:</label> <span id="companyName"></span>
             </div>
@@ -228,15 +230,13 @@
             <div class="profile-detail">
                 <label>Company Description:</label> <span id="companyDescription"></span>
             </div>
-
             <div class="social-links">
-                <a id="facebookLink" target="_blank">Facebook</a>
-                <a id="instagramLink" target="_blank">Instagram</a>
-                <a id="twitterLink" target="_blank">Twitter</a>
-                <a id="linkedinLink" target="_blank">LinkedIn</a>
-                <a id="githubLink" target="_blank">GitHub</a>
+                <a id="facebookLink" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a id="instagramLink" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a id="twitterLink" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a id="linkedinLink" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a id="githubLink" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-
             <div class="comments">
                 <label>Comments:</label>
                 <p id="comments"></p>
@@ -271,7 +271,11 @@
                     <label for="officeLocation">Office Location:</label>
                     <input type="text" id="officeLocation" name="officeLocation" required>
                 </div>
-                <button type="submit">Generate Job Listings</button>
+                <div class="form-group">
+                    <label for="lastDateToApply">Last Date to Apply:</label>
+                    <input type="date" id="lastDateToApply" name="lastDateToApply" required>
+                </div>
+                <button type="submit">Add Job Listing</button>
             </form>
         </div>
     </div>
@@ -342,6 +346,9 @@
                     <div class="job-detail">
                         <label>Office Location:</label> <span>${job.location}</span>
                     </div>
+                    <div class="job-detail">
+                        <label>Last Date to Apply:</label> <span>${job.lastDateToApply}</span>
+                    </div>
                 `;
 
                 jobListingsContainerDiv.appendChild(jobListing);
@@ -367,24 +374,43 @@
                 languages: document.getElementById("jobLanguages").value,
                 requirements: document.getElementById("jobRequirements").value,
                 experience: document.getElementById("userExperience").value,
-                location: document.getElementById("officeLocation").value
+                location: document.getElementById("officeLocation").value,
+                lastDateToApply: document.getElementById("lastDateToApply").value
             };
 
-            // Generate 10 job listings
-            const jobListings = [];
-            for (let i = 0; i < 10; i++) {
-                jobListings.push(jobDetails);
-            }
+            // Retrieve existing job listings from localStorage
+            const jobListings = JSON.parse(localStorage.getItem("jobListings")) || [];
 
-            // Store job listings in localStorage
+            // Add the new job listing
+            jobListings.push(jobDetails);
+
+            // Store updated job listings in localStorage
             localStorage.setItem("jobListings", JSON.stringify(jobListings));
 
-            // Redirect to the first page
-            window.location.href = "company.html";
+            // Save job data to a JSON file (simulated)
+            saveJobDataToJSON(jobListings);
+
+            // Clear the form
+            document.getElementById("jobInputForm").reset();
+
+            // Update the job listings display
+            showJobListings();
         });
+
+        // Function to save job data to a JSON file
+        function saveJobDataToJSON(jobListings) {
+            const jsonData = JSON.stringify(jobListings, null, 2);
+            const blob = new Blob([jsonData], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "jobdata.json";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
 
         // Show profile by default when the page loads
         showProfile();
     </script>
 </body>
-<!-- </html> in  this  page we need to the joblising buton and if user can create a new job the only update the one one div and anather div differnt value or data and in the add job requment section take one more colum  for the last date for apply and -->
+</html>

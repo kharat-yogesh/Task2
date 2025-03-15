@@ -1,122 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Portal</title>
-   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            background-color: gray;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            border: 2px black solid;
-            height: 20px;
-            width: 300px;
-            background-color: aqua;
-            text-align: center;
-            padding: 20px;
-            font-size: 20px;
-            margin: 20px auto;
-            border-radius: 20px;
-        }
-        .box {
-            border: 2px black solid;
-            height: 250px;
-            width: 300px;
-            margin: 20px;
-            background-color: aliceblue;
-            text-align: center;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .mainbody {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgb(184, 180, 180);
-        }
-        .mainbox {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .hq {
-            text-align: center;
-        }
-    
-        #button1, #button2, #button3 {
-            background-color: red;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        a {
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        .social-icons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: black;
-            font-size: 24px;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header {
-                width: 80%;
-                font-size: 18px;
-            }
-            .box {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="mainbody">
-        <div class="header">
-            Welcome to the Job Portal
-        </div>
-        <div class="mainbox">
-            <div class="box">
-                <h1 class="hq">Login as Admin</h1>
-                <h3 class="hq">If you have a company, go with the Admin panel</h3>
-                <button id="button1"><a href="Admitpanlelogin.html" target="_blank">Register as Admin</a></button>
-            </div>
-            <div class="box">
-                <h1 class="hq">Register as User</h1>
-                <h3 class="hq">Create an account to explore job opportunities</h3>
-                <button id="button2"><a href="userragister.html">Register as User</a></button>
-            </div>
-            <div class="box">
-                <h1 class="hq">Login Portal</h1>
-                <h3 class="hq">Access your account to apply for jobs</h3>
-                <button id="button3"><a href="login.html">Login to Job Portal</a></button>
-            </div>
-        </div>
-        <div class="social-icons">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-    </div>
-</body>
-</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -847,6 +729,145 @@ body {
   direction: none;
   text-decoration:none ;
  }
+ /* Existing CSS remains the same */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Navbar buttons alignment */
+    .auth {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .auth button {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    /* Stats section horizontal scroll */
+    .stats {
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 20px;
+    }
+
+    .stats > div {
+        display: inline-block;
+        margin-right: 20px;
+        min-width: 150px;
+    }
+
+    /* Job categories grid */
+    .categories {
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 20px;
+    }
+
+    .category, .category1, .category2, .category3, .category4, .category5 {
+        display: inline-block;
+        margin-right: 20px;
+        min-width: 200px;
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .link-grid {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .link-column {
+        width: 100%;
+    }
+
+    .app-download {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .support-line {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Navbar buttons alignment */
+    .auth {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .auth button {
+        width: 100%;
+    }
+
+    /* Stats section horizontal scroll */
+    .stats > div {
+        min-width: 120px;
+    }
+
+    /* Job categories grid */
+    .category, .category1, .category2, .category3, .category4, .category5 {
+        min-width: 150px;
+    }
+
+    /* Footer adjustments */
+    .footer-title {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .link-grid {
+        gap: 5px;
+    }
+
+    .app-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .support-line {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -878,7 +899,7 @@ body {
         <div class="stats">
             <div class="">
                 <h2 class="h2">Live Jobs</h2>
-                <div class="stat-number" data-target="24324">0 +</div>
+                <div class="stat-number" data-target="2432">0 +</div>
             </div>
             <div>
                 <h2>Companies</h2>
