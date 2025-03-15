@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Login</title>
     <style>
-        body {
+            body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -127,6 +127,9 @@
                     );
 
                     if (company) {
+                        // Store the logged-in company's data in localStorage
+                        localStorage.setItem('currentUser', JSON.stringify(company));
+
                         // Redirect to admin page if credentials are valid
                         alert("Login successful!");
                         window.location.href = "admin.html";
